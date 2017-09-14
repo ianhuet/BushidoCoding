@@ -28,17 +28,13 @@ function Route(count) {
 }
 
 Route.prototype.parts = [
-              ['Hairy', 'Spooky', 'Yellow', 'Farmer', 'Ruby',
-               'Green', 'Smelly', 'Stone', 'Silly', 'Owl'],
-              [' Hills', 'sville', 'ston', 'sborough', ' Valley',
-               'fields', 'bears']
-            ];
+  ['Hairy', 'Spooky', 'Yellow', 'Farmer', 'Ruby', 'Green', 'Smelly', 'Stone', 'Silly', 'Owl'],
+  [' Hills', 'sville', 'ston', 'sborough', ' Valley', 'fields', 'bears']
+];
 
 Route.prototype.next = function () {
   this.index++;
-  return this.current = this.index < this.stations.length ? 
-    this.stations[this.index] :
-    '';
+  return this.current = this.index < this.stations.length ? this.stations[this.index] : '';
 }
 
 function Passenger(route) {
