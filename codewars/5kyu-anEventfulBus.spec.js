@@ -9,19 +9,16 @@ Array.prototype.random = function () {
 }
 
 function Route(count) {
-
   var parts = this.parts, stations = [], i, station;
 
   for (i = 0; i < count; i++) {
     station = parts[0].random() + parts[1].random();
-    
     if (stations.indexOf(station) === -1) {
       stations.push(station);
-    } else  { 
+    } else {
       i--;
     }
   }
-  
   this.stations = stations;
   this.current = null;
   this.index = -1;
@@ -46,11 +43,10 @@ function Passenger(route) {
   this.boarded = false;
 }
 
-Passenger.prototype.names = [['Alex', 'Boris', 'Richard', 'Robert', 'George', 'Sam',
-                'Ann', 'Mary', 'Kate', 'Susan', 'Jennifer', 'Lucy'],
-              ['Smith', 'Sommers', 'Green', 'Thompson', 'Johnson', 'Simpson',
-               'White', 'Campbell', 'McDougal', 'Richards', 'Patisson', 'Williams'
-              ]];
+Passenger.prototype.names = [
+  ['Alex', 'Boris', 'Richard', 'Robert', 'George', 'Sam', 'Ann', 'Mary', 'Kate', 'Susan', 'Jennifer', 'Lucy'],
+  ['Smith', 'Sommers', 'Green', 'Thompson', 'Johnson', 'Simpson', 'White', 'Campbell', 'McDougal', 'Richards', 'Patisson', 'Williams']
+];
 
 Passenger.prototype.hopOn = function(bus) {
   this.boarded = true;
@@ -72,13 +68,11 @@ Passenger.prototype.hopOff = function(time) {
 }
 
 function Simulation(nStations, nPassengers) {
-  var route = new Route(nStations),
-      passengers = [];
-  
+  var route = new Route(nStations), passengers = [];
   while(nPassengers--) {
     passengers.push(new Passenger(route));
   }
-  
+
   this.route = route;
   this.passengers = passengers;
 }
@@ -107,7 +101,7 @@ Simulation.prototype.run = function run(bus) {
 
   announce('You can get aboard the bus now');
   this.passengers.forEach(function (passenger) {
-      passenger.hopOn(bus);
+    passenger.hopOn(bus);
   });
   announce('Boarding is now finished. Departing from the boarding point');
 
@@ -117,13 +111,13 @@ Simulation.prototype.run = function run(bus) {
 
     curPassengers = this.passengers.filter(function (p) { 
       return p.destination === route.current;
-    }); 
+    });
     bus.unsubscribe(route.current);
-    
+
     if (i !== nStations - 1) {
       announce('Now departing from ' + route.current);
     }
-    
+
     curPassengers.filter(function (p) { 
       return p.boarded;
     }).forEach(function (p) {
@@ -150,22 +144,22 @@ function Stub() {
 
   return _stub;
 }
-  
-                      
+
+
 describe('the bus object', function () {
-    
+
   var stubs = [], s0 = [], s1 = [], sCount = 6,
       e0 = 'test0', e1 = 'test1', 
       bus, j;
-  
+
   for (j = 0; j < sCount; j++) {
     stubs[j] = new Stub();
   }
-    
+
   stubs.forEach(function (stub, index) { 
     (!(index % 2) ? s0 : s1).push(stub); 
   });
-  
+
   before(function () {
     bus = new Bus();
     
@@ -181,7 +175,7 @@ describe('the bus object', function () {
       Test.expect(typeof bus[method] === 'function', 'should have '+ (i > 0 ? 'an': 'a') + ' .' + method + ' method');
     });
   });
-  
+
   it('correctly handles .emit for a name with no callbacks', function () {
     
     try {
@@ -190,9 +184,8 @@ describe('the bus object', function () {
     } catch (e) {
       Test.expect(false, 'error when executing emit for a name with no callbacks: ' + (e.message || e));
     }
-    
   });
-  
+
   it('can subscribe callbacks to a name and then invoke them by an .emit(name) call', function () {
 
     s0.forEach(function (stub) { bus.subscribe(e0, stub); });
@@ -203,9 +196,8 @@ describe('the bus object', function () {
     s0.forEach(function (stub) {
       Test.expect(stub.calls === 1, 'unable to call a subscribed callback via .emit(name) with no additional arguments');
     });
-    
   });
-  
+
   it('.emit function executes only the callbacks for a provided name, and passes its additional arguments to them', function () {
     var args = ['foo', 1, function bar() { }, undefined, true, { foo: 'bar' }, null];
     
@@ -222,7 +214,7 @@ describe('the bus object', function () {
       Test.expect(stub.calls === 0, 'the callbacks for other names should not be called');
     });
   });
-    
+
   it('can unsubscribe callbacks by event name and a function or just by event name', function () {
 
     s0.forEach(function (stub) { bus.subscribe(e0, stub); });
@@ -255,11 +247,10 @@ describe('the bus object', function () {
     s0.forEach(function (stub) {
       Test.expect(stub.calls === 0, 'after bus.unsubscribe(name), no callbacks should fire on .emit(name)');
     });
-    
   });
-  
+
   it('passes the simulation test', function () {
       new Simulation(rInt(8, 16), rInt(25, 50)).run(bus);
   });
-    
+
 });
