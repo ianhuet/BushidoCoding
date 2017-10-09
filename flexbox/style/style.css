@@ -38,11 +38,11 @@ h6 {
   display: flex;
 }
 
-.container .container.row {
+.container.row {
   flex-direction: row;
 }
 
-.container .container.row-reverse {
+.container.row-reverse {
   flex-direction: column-reverse;
 }
 
@@ -50,15 +50,15 @@ h6 {
   flex-direction: column;
 }
 
-.container .container.column-reverse {
+.container.column-reverse {
   flex-direction: column-reverse;
 }
 
-.container .container.wrap {
+.container.wrap {
   flex-wrap: wrap;
 }
 
-.container .container.flex-end {
+.container.flex-end {
   justify-content: flex-end;
 }
 
@@ -68,4 +68,8 @@ h6 {
 
 .item.fill {
   flex-grow: 1;
+}
+
+.item.flex-grow {
+  flex-grow: 2;
 }

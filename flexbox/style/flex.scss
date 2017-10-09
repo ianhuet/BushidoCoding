@@ -1,37 +1,41 @@
 .container {
   display: flex;
 
-  .container.row {
+  &.row {
     flex-direction: row;
   }
-  .container.row-reverse {
+  &.row-reverse {
     flex-direction: column-reverse;
   }
   &.column {
     flex-direction: column;
   }
 
-  .container.column-reverse {
+  &.column-reverse {
     flex-direction: column-reverse;
   }
 
-  .container.wrap {
+  &.wrap {
     flex-wrap: wrap;
   }
 
-  .container.flex-end {
+  &.flex-end {
     justify-content: flex-end;
   }
 }
 
 
 
-.item {}
-
-  .item.max-width {
+.item {
+  &.max-width {
     max-width: 15%;
   }
 
-  .item.fill {
+  &.fill {
     flex-grow: 1;
   }
+
+  &.flex-grow {
+    flex-grow: 2;
+  }
+}
