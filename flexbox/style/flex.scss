@@ -18,6 +18,9 @@
   &.wrap {
     flex-wrap: wrap;
   }
+  &.row-wrap {
+    flex-flow: row wrap;
+  }
 
   &.flex-end {
     justify-content: flex-end;

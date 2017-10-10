@@ -58,6 +58,10 @@ h6 {
   flex-wrap: wrap;
 }
 
+.container.row-wrap {
+  flex-flow: row wrap;
+}
+
 .container.flex-end {
   justify-content: flex-end;
 }
