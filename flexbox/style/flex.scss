@@ -34,6 +34,17 @@
     align-items: stretch;
   }
 
+  &.frame {
+    align-items: center;
+    min-height: 60vh;
+    justify-content: center;
+
+    img {
+      height: inherit;
+      max-width: 100%;
+      width: inherit;
+    }
+  }
 
   &.gallery {
     align-items: center;

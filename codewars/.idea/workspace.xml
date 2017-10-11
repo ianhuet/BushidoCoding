@@ -2,18 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="587e0937-bd33-46d9-a006-2d1e4e58fb2b" name="Default" comment="Catch-up on VC. Progressing 6kyu-hall-of-fame...">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../flexbox/.idea/codeStyleSettings.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/3kyu-functional-lists.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/7kyu-stats-fundamentals.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/8kyu-oo-piracy.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../flexbox/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../flexbox/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../flexbox/content.html" afterPath="$PROJECT_DIR$/../flexbox/content.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../flexbox/gulpfile.js" afterPath="$PROJECT_DIR$/../flexbox/gulpfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../flexbox/index.html" afterPath="$PROJECT_DIR$/../flexbox/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../flexbox/node_modules/gulp-util/package.json" afterPath="$PROJECT_DIR$/../flexbox/node_modules/gulp-util/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../flexbox/package.json" afterPath="$PROJECT_DIR$/../flexbox/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../flexbox/style/base.scss" afterPath="$PROJECT_DIR$/../flexbox/style/base.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../flexbox/style/flex.scss" afterPath="$PROJECT_DIR$/../flexbox/style/flex.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../flexbox/style/style.css" afterPath="$PROJECT_DIR$/../flexbox/style/style.css" />
     </list>

@@ -86,6 +86,18 @@ img {
   align-items: stretch;
 }
 
+.container.frame {
+  align-items: center;
+  min-height: 60vh;
+  justify-content: center;
+}
+
+.container.frame img {
+  height: inherit;
+  max-width: 100%;
+  width: inherit;
+}
+
 .container.gallery {
   align-items: center;
 }
