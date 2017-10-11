@@ -5,7 +5,7 @@ const pkg = require("./package.json");
 const gulp = require("gulp");
 
 // load all plugins in "devDependencies" into the variable $
-const $ = require("gulp-load-plugins")({
+const plugin = require("gulp-load-plugins")({
   pattern: ["*"],
   scope: ["devDependencies"]
 });
@@ -32,16 +32,16 @@ const banner = [
 
 gulp.task('sass', function(){
   return gulp.src('style/*.scss')
-    .pipe($sass())
-    .pipe($concatCss("style/style.css"))
+    .pipe(plugin.sass())
+    .pipe(plugin.concatCss("style/style.css"))
     .pipe(gulp.dest(''))
-    .pipe($browserSync.reload({
+    .pipe(plugin.browserSync.reload({
       stream: true
     }));
 });
 
 gulp.task('browserSync', function() {
-  $browserSync.init({
+  plugin.browserSync.init({
     server: {
       baseDir: './'
     },
@@ -50,5 +50,5 @@ gulp.task('browserSync', function() {
 
 gulp.task('watch', ['browserSync'], function(){
   gulp.watch("style/*.scss", ['sass']);
-  gulp.watch("*.html").on('change', bs.reload);
+  gulp.watch("*.html").on('change', browserSync.reload);
 });
