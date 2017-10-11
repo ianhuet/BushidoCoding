@@ -25,6 +25,93 @@
   &.flex-end {
     justify-content: flex-end;
   }
+
+  &.align-v-center {
+    align-items: center;
+  }
+
+  &.align-v-stretch {
+    align-items: stretch;
+  }
+
+
+  &.gallery {
+    align-items: center;
+
+    .item {
+      border: 0;
+    }
+  }
+
+  &.zigzag {
+    flex-direction: column;
+
+    .item {
+      border-top: 0;
+      display: flex;
+      flex-direction: row;
+
+      &:first-of-type {
+        border-top: 1px solid #000;
+      }
+
+      &:nth-of-type(2n) {
+        flex-direction: row-reverse;
+
+        img {
+          padding-left: 20px;
+          padding-right: 0;
+        }
+      }
+
+      img {
+        height: inherit;
+        padding-right: 20px;
+        width: calc(47.5% + 20px);
+      }
+
+      p {
+        text-align: justify;
+        width: 50%;
+      }
+    }
+  }
+
+  &.doormats {
+    img {
+      margin-bottom: 20px;
+    }
+
+    .item {
+      border-left: 0;
+      flex-basis: 20%;
+      padding-bottom: 20px;
+
+      &:first-of-type {
+        border-left: 1px solid #000;
+      }
+
+      .content {
+        align-self: flex-start;
+        order: 1;
+
+        p {
+          min-height: 30vh;
+          min-width: 0;
+          padding-bottom: 10px;
+          word-wrap: break-word;
+        }
+      }
+
+      a {
+        align-self: flex-end;
+        display: block;
+        order: 2;
+        text-align: center;
+      }
+    }
+  }
+
 }
 
 

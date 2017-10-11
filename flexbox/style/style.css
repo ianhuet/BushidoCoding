@@ -22,6 +22,18 @@ h6 {
   text-transform: capitalize;
 }
 
+a {
+  color: #98C440;
+}
+
+a:hover {
+  color: #4E181E;
+}
+
+img {
+  width: 100%;
+}
+
 .container {
   margin: 10px 0 20px;
   padding: 20px;
@@ -64,6 +76,89 @@ h6 {
 
 .container.flex-end {
   justify-content: flex-end;
+}
+
+.container.align-v-center {
+  align-items: center;
+}
+
+.container.align-v-stretch {
+  align-items: stretch;
+}
+
+.container.gallery {
+  align-items: center;
+}
+
+.container.gallery .item {
+  border: 0;
+}
+
+.container.zigzag {
+  flex-direction: column;
+}
+
+.container.zigzag .item {
+  border-top: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.container.zigzag .item:first-of-type {
+  border-top: 1px solid #000;
+}
+
+.container.zigzag .item:nth-of-type(2n) {
+  flex-direction: row-reverse;
+}
+
+.container.zigzag .item:nth-of-type(2n) img {
+  padding-left: 20px;
+  padding-right: 0;
+}
+
+.container.zigzag .item img {
+  height: inherit;
+  padding-right: 20px;
+  width: calc(47.5% + 20px);
+}
+
+.container.zigzag .item p {
+  text-align: justify;
+  width: 50%;
+}
+
+.container.doormats img {
+  margin-bottom: 20px;
+}
+
+.container.doormats .item {
+  border-left: 0;
+  flex-basis: 20%;
+  padding-bottom: 20px;
+}
+
+.container.doormats .item:first-of-type {
+  border-left: 1px solid #000;
+}
+
+.container.doormats .item .content {
+  align-self: flex-start;
+  order: 1;
+}
+
+.container.doormats .item .content p {
+  min-height: 30vh;
+  min-width: 0;
+  padding-bottom: 10px;
+  word-wrap: break-word;
+}
+
+.container.doormats .item a {
+  align-self: flex-end;
+  display: block;
+  order: 2;
+  text-align: center;
 }
 
 .item.max-width {

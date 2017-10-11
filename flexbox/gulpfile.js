@@ -4,34 +4,23 @@ const pkg = require("./package.json");
 // gulp
 const gulp = require("gulp");
 
-// load all plugins in "devDependencies" into the variable $
-const plugin = require("gulp-load-plugins")({
-  pattern: ["*"],
-  scope: ["devDependencies"]
+// load all plugins
+var plugin = require('gulp-load-plugins')({
+  pattern: ['gulp-*', 'gulp.*', '*'],
+  replaceString: /\bgulp[\-.]/
 });
 
-const onError = (err) => {
-  console.log(err);
-};
 
-const banner = [
-  "/**",
-  " * @project        <%= pkg.name %>",
-  " * @author         <%= pkg.author %>",
-  " *",
-  " */",
-  ""
-].join("\n");
-
-//
-// var gulp        = require('gulp');
-// var sass        = require('gulp-sass');
-// var concatCss   = require('gulp-concat-css');
-// var browserSync = require('browser-sync').create();
 
 
 gulp.task('sass', function(){
   return gulp.src('style/*.scss')
+    .pipe(plugin.plumber({ errorHandler: function(err) {
+      plugin.notify.onError({
+        title: "Gulp error in " + err.plugin,
+        message:  err.toString()
+      })(err);
+    }}))
     .pipe(plugin.sass())
     .pipe(plugin.concatCss("style/style.css"))
     .pipe(gulp.dest(''))
@@ -40,7 +29,21 @@ gulp.task('sass', function(){
     }));
 });
 
+gulp.task('html', function(){
+  return gulp.src('*.html')
+    .pipe(plugin.plumber({ errorHandler: function(err) {
+      plugin.notify.onError({
+        title: "Gulp error in " + err.plugin,
+        message:  err.toString()
+      })(err);
+    }}))
+    .pipe(plugin.browserSync.reload({
+      stream: true
+    }));
+});
+
 gulp.task('browserSync', function() {
+  plugin.browserSync.create();
   plugin.browserSync.init({
     server: {
       baseDir: './'
@@ -50,5 +53,5 @@ gulp.task('browserSync', function() {
 
 gulp.task('watch', ['browserSync'], function(){
   gulp.watch("style/*.scss", ['sass']);
-  gulp.watch("*.html").on('change', browserSync.reload);
+  gulp.watch("*.html", ['html']);
 });
