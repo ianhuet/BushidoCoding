@@ -12,19 +12,17 @@ import 'rxjs/Rx';
   styleUrls   : ['./app.component.scss']
 })
 export class AppComponent {
-  gifs  : any = null;
-
-  title    = 'Swiffy';
-  subTitle = 'A most awesome remake of Giffy for Swrve';
-  q        = 'cats';
-
-
   private giffyApiUrl = 'http://api.giphy.com/v1/gifs/search';
   private giffyApiKey = 'ADzCz2YNl7jYztX9tx3sdAKE9X8IoHd9';
 
+  private title    = 'Swiffy';
+  private subTitle = 'giving Giffy Cats & Dogs a new home at Swrve';
+
+  protected gifs  : any = null;
+
 
   constructor(private _http: Http) {
-    this.getGiffySearch('dogs', 0);
+    this.getGiffySearch('cats', 0);
   }
 
   private getGiffySearch(q: string, offset: number) {

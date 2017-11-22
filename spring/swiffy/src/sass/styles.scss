@@ -1,0 +1,46 @@
+@import './variables';
+
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
+
+html,
+body {
+  background-color: $shark;
+  color: $zircon;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+
+header {
+
+  h1 {
+    color: $pippin;
+    background: $cerise;
+    box-shadow: 0 0 3px rgba(0,0,0,.3);
+    font-family: 'Amatic SC', cursive;
+    left: -60px;
+    letter-spacing: 1px;
+    line-height: 50px;
+    position: fixed;
+    text-align: center;
+    top: 15px;
+    transform: rotate(-45deg);
+    width: 250px;
+
+    span {
+      border-bottom: 1px dashed $pippin;
+      border-top: 1px dashed $pippin;
+      display: inline-block;
+      margin-bottom: 4px;
+      margin-top: 4px;
+      width: 100%;
+    }
+  }
+
+  h2 {
+    text-align: center;
+  }
+}
+
+

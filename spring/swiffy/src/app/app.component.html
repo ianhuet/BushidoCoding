@@ -1,11 +1,16 @@
 <header>
-  <h1>Welcome to {{title}}!</h1>
+  <h1 class="corner-ribbon top-left sticky red shadow"><span>{{title}}</span></h1>
   <h2>{{subTitle}}</h2>
 </header>
 
-<h2>The latest &amp; greatest {{q}}:</h2>
+<section class="gallery">
+  <div class="gif" *ngFor="let gif of gifs">
 
-<div class="gif-gallery" *ngFor="let gif of gifs">
-  <div><span>Id:</span> {{gif.id}}</div>
-  <div><span>Slug:</span> {{gif.slug}}</div>
-</div>
+    <img src="{{gif.images.original_still.url}}" alt="">
+
+    <dl>
+      <dt>Id:</dt><dd>{{gif.id}}</dd>
+      <dt>Slug:</dt><dd>{{gif.slug}}</dd>
+    </dl>
+  </div>
+</section>
