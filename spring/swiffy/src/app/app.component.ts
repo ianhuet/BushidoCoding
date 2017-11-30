@@ -21,9 +21,32 @@ export class AppComponent {
   protected gifs  : any = null;
 
 
+
   constructor(private _http: Http) {
     this.getGiffySearch('cats', 0);
   }
+
+
+  ngOnInit() {
+    // $('.gallery').isotope();
+      // itemSelector: '.gif',
+      // masonry: { columnWidth: 100 }
+    
+    var elem = document.querySelector('.gallery');
+    var iso = new Isotope( elem, {
+      itemSelector: '.grid-item',
+      layoutMode: 'fitRows'
+    });
+  }
+
+  goMotion(event : MouseEvent) : void {
+    console.log(event);
+    // let gif = getGif(this.id);
+
+    // event.src = "https://media3.giphy.com/media/Ov5NiLVXT8JEc/200w.gif";
+  }
+
+
 
   private getGiffySearch(q: string, offset: number) {
     let limit = 25;
@@ -35,5 +58,11 @@ export class AppComponent {
         console.log('Gifs', this.gifs);
       });
   }
+
+  // private getGif(id: string) {
+  //   let gif = this.gifs.filter(n => n.id === id);
+  //   return gif;
+  // }
+
 }
 

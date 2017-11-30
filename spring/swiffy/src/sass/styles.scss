@@ -27,6 +27,7 @@ header {
     top: 15px;
     transform: rotate(-45deg);
     width: 250px;
+    z-index: 100;
 
     span {
       border-bottom: 1px dashed $pippin;
@@ -44,3 +45,25 @@ header {
 }
 
 
+.gallery {
+
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  .gif {
+    position: relative;
+
+    img {
+      float: left;
+      margin-bottom: 5px;
+      margin-left: 5px;
+    }
+
+    dl {
+      display: none;
+    }
+  }
+}

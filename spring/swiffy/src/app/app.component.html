@@ -4,13 +4,15 @@
 </header>
 
 <section class="gallery">
-  <div class="gif" *ngFor="let gif of gifs">
 
-    <img src="{{gif.images.original_still.url}}" alt="">
+  <div class="gif" *ngFor="let gif of gifs">
+    <img (click)="goMotion($event)" id="{{gif.id}}" src="{{gif.images.fixed_width_still.url}}" class="still" width="{{gif.images.fixed_width_still.width}}" height="{{gif.images.fixed_width_still.height}}">
+    <!-- <img src="{{gif.images.original.url}}" class="motion"> -->
 
     <dl>
       <dt>Id:</dt><dd>{{gif.id}}</dd>
       <dt>Slug:</dt><dd>{{gif.slug}}</dd>
     </dl>
   </div>
+
 </section>

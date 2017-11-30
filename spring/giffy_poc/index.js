@@ -16,3 +16,4 @@ function getGiffySearch(q) {
 }
 
 let data = getGiffySearch('cats');
+console.log(data);
