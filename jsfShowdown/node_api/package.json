@@ -1,0 +1,19 @@
+{
+  "name": "jsfs_api",
+  "version": "1.0.0",
+  "description": "Api for serving random data to JS Framework showdown codign challenge",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ian@Huet.info",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.4"
+  }
+}
