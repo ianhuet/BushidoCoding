@@ -58,7 +58,8 @@ module.exports = function (app, db) {
             i.value = getRandomInt(10000, 2000000);
             d.roiItems.push(i);
         }
-        res.send(d);
+
+        setTimeout((function () { res.send(d) }), getRandomInt(0, 5000));
     });
 
     app.post('/data', (req, res) => {
@@ -91,9 +92,7 @@ module.exports = function (app, db) {
         });
 
 
-        // console.log(req);
         let json = req.body;
-
         try {
             if (typeof json != 'object'){
                 res.status(406).send('Invalid data - ' + JSON.stringify(json));
