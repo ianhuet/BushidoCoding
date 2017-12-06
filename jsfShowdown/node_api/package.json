@@ -11,9 +11,11 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "is-my-json-valid": "^2.16.1"
   },
   "devDependencies": {
+    "is-my-json-valid": "^2.16.1",
     "nodemon": "^1.12.4"
   }
 }
