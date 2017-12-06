@@ -1,8 +1,21 @@
 'use strict';
 
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+const getRandomInt = ((min, max) => Math.floor(Math.random() * (max - min + 1)) + min);
+function getTodaysDate() {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1;
+
+    var yyyy = today.getFullYear();
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+    return dd + '/' + mm + '/' + yyyy;
 }
+
 
 let curOptions   = ['EUR', 'GBP', 'BTC', 'USD'];
 let titleOptions = ['SOCTK', 'FDR', 'GPM', 'TASTAS.PLUS', 'FEW', 'XACS', 'LKG', 'EFWW', 'XXP', 'OTPS', 'DHKS'];
@@ -28,6 +41,7 @@ module.exports = function (app, db) {
             'value' : 0
         };
 
+        rData.lastUpdated = getTodaysDate();
         rData.currency = curOptions[getRandomInt(0, 3)];
 
         let i, itemNo = getRandomInt(1, 6);
