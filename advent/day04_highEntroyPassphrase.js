@@ -1,5 +1,6 @@
 /**
 --- Day 4: High-Entropy Passphrases ---
+http://adventofcode.com/2017/day/4
 
 A new system policy has been put in place that requires all accounts to use a passphrase instead of
 simply a password. A passphrase consists of a series of words (lowercase letters) separated by spaces.
@@ -540,9 +541,11 @@ let input = `
 
 function Day04_Part1(input){
   let validPhrases;
+
   validPhrases = input.trim().split('\n').filter(
     n => n.trim().split(' ').every(
       (e,i,n) => n.indexOf(e) === n.lastIndexOf(e)));
+
   return validPhrases.length;
 }
 
@@ -572,3 +575,36 @@ function Day04_Part2(input){
 console.log('Day04: Part#1', Day04_Part1(input));
 console.log('Day04: Part#2', Day04_Part2(input));
 
+
+
+// peasant-trip
+// https://www.reddit.com/r/adventofcode/comments/7hf5xb/2017_day_4_solutions/dqqjrq2/
+/*
+The main part here is the isValid predicate that determines whether a passphrase is valid. I 
+prefer to always cram both parts of a puzzle into one, so to distinguish between parts I pass a 
+function f into isValid through count. f would be applied to every word in a phrase before comparing 
+them. The only difference between such "converter" functions for parts 1 and 2 is that the former is 
+a trivial one and simply compares words as they are (w => w, perf. be damned), and the latter compares 
+them by whether they are anagrams of each other - that's the same as sorting both words 
+lexicographically and comparing the result. This is what sortLetters does.
+
+So with these two converter functions the answer to both parts is count(f) - just the number of phrases 
+that are valid. With f passed down to isValid, isValid(f) can be used to filter the list of phrases. 
+isValid(f)(ph) is true if ph is a valid passphrase.
+
+The trick is how to compare all converted words in a phrase (ph.split(' ').map(f)) with each other 
+and track whether they're all unique. There are different ways to do this, like using new Set on a 
+phrase like in the comment above; here I used a very helpful array method every, which tests a predicate 
+on every element of a list and returns whether it is true for all of them.
+
+With noRepeats as this predicate (the funky parameter syntax comes from how all functional array methods 
+call their callbacks) I get what I need: it returns true for a (converted) word if a list of (converted) 
+words contains it only once.
+*/
+const phrases = document.body.textContent.trim().split('\n');
+const noRepeats = (w, _, ws) => ws.filter(v => v === w).length === 1;
+const sortLetters = w => [...w].sort().join('');
+const isValid = f => ph => ph.split(' ').map(f).every(noRepeats);
+const count = f => phrases.filter(isValid(f)).length;
+
+console.log([w => w, sortLetters].map(count));

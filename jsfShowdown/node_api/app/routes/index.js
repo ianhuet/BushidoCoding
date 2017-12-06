@@ -1,3 +1,4 @@
+'use strict';
 
 const dataRoutes = require('./data_routes');
 

@@ -3623,6 +3623,7 @@ data = doCountrySort(data);
 
 // loop through each country and find attendee overlap
 for (var c in data) {
+  console.log(c, data[c].length, "-----------------------------------------");
 
   dateSet = data[c].map(p => p.availableDates);
   dates = dateSet.shift().filter(function(v) {
@@ -3630,6 +3631,8 @@ for (var c in data) {
       return a.indexOf(v) !== -1;
     });
   });
+
+  // console.log(dateSet);
 
   lSchedule = new schedule();
   // lSchedule.setName(c);
@@ -3648,5 +3651,5 @@ let result = {
 'countries': countries
 }
 
-console.log(result);
+// console.log(result);
 
