@@ -6,49 +6,62 @@
 
 function treasure(maze, x, y) {
 
-  const mapValue   = (x,y) => maze[x-1].charAt(y-1);
-  const beenThere  = (x,y) => done.indexOf([x,y]) === -1;
-  const canExplore = (x,y) => maze[x-1].charAt(y-1) != 'X' && ! beenThere(x,y);
+  const mapValue = (cell) => {
+    let cX=cell[0], cY=cell[1];
+    return maze[cX-1].charAt(cY-1);
+  }
+  const newCell = (cell) => visited.indexOf(cell) === -1;
+  const notWall = (cell) => mapValue(cell) !== 'X' && newCell(cell);
 
   let cnt=0;
-  let c=[], t=[], hunt=[], done=[];
+  let current=[], cell=[], queue=[], visited=[];
 
 
-  hunt.push([x,y]);
-  while (hunt.length > 0 || cnt < 10) {
+  queue.push([x,y]);
+  while (queue.length > 0) {
     cnt++;
-    c = hunt.pop();
+    current = queue.pop();
 
-    if (mapValue(c[0],c[1]) !== 'X') {
-      if (mapValue(c[0],c[1]) !== ' ') t.push(mapValue(c[0],c[1]));
-      if (mapValue(c[0],c[1]) === ' ') done.push([c[0],c[1]]);
-    
-      if (canExplore(c[0],c[1]-1)) hunt.push([c[0],c[1]-1]); // check North
-      if (canExplore(c[0]-1,c[1])) hunt.push([c[0]-1,c[1]]); // check West
-      if (canExplore(c[0]+1,c[1])) hunt.push([c[0]+1,c[1]]); // check East
-      if (canExplore(c[0],c[1]+1)) hunt.push([c[0],c[1]+1]); // check South
+    // console.log('mapValue', c, x, y, x-1, y-1, ':' + maze[x-1] + ':', '.' + maze[x-1].charAt(y-1) + '.', '/' + maze[x].charAt(y) + '/');
+    // console.log('c', current, mapValue(current));
+
+    if (mapValue(current) === ' ') visited.push(current);
+    if (mapValue(current) !== ' ') return 'The treasure is ' + mapValue(current) + ' :)';
+
+    cell = [current[0],current[1]-1];
+    if (notWall(cell)) queue.push(cell);
+
+    cell = [current[0]-1,current[1]];
+    if (notWall(cell)) queue.push(cell);
+
+    cell = [current[0]+1,current[1]];
+    if (notWall(cell)) queue.push(cell);
+
+    cell = [current[0],current[1]+1];
+    if (notWall(cell)) queue.push(cell);
       
-      console.log(c[0], c[1], mapValue([c[0],c[1]]));
-  
-      console.log('c', c, c[0], c[1]);
-      console.log('cVal *', mapValue(c[0],c[1]), '*');
-      console.log('Done', cnt, hunt);
-      console.log('Hunt', hunt);
-    }
+    console.log('Visited', cnt, visited);
+    console.log('Hunt', queue, queue.length);
   }
 
-  if (t[0]) {
-    return 'The treasure is ' + t[0] + ' :)';
-  } else {
-    return 'No treasure found :(';
-  }
+  return 'No treasure found :(';
 }
 
 
+// var maze = [
+//   "XXXX",
+//   "X XX",
+//   "X TX",
+//   "XXXX"
+// ];
+
 var maze = [
-    "XXXX",
-    "X XX",
-    "X TX",
-    "XXXX"
+  'XXXXXXX',
+  'X  X  X',
+  'X  X  X',
+  'X  XXXX',
+  'X X   X',
+  'XAX B X',
+  'XXXXXXX'
 ];
 console.log(treasure(maze,2,2));
