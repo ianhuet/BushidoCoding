@@ -1,59 +1,85 @@
 // REFACTOR
-// mapValue && canExplore are using different parameter formats
-// check directions by loop
-// treasure found or all done > more elegant done tracking...
-// rationalise map co-ordinates
+// x same cell added to visited multiple times?
+// x check directions by loop
+
+// x treasure found or all done > more elegant done tracking...
+// x rationalise map co-ordinates
+// x mapValue && canExplore are using different parameter formats
+
 
 function treasure(maze, x, y) {
+
+  let cnt=0;
+  let current=[], cell=[], queue=[], visited=[];
 
   const mapValue = (cell) => {
     let cX=cell[0], cY=cell[1];
     return maze[cX-1].charAt(cY-1);
   }
-  const newCell = (cell) => visited.indexOf(cell) === -1;
-  const notWall = (cell) => mapValue(cell) !== 'X' && newCell(cell);
-
-  let cnt=0;
-  let current=[], cell=[], queue=[], visited=[];
-
+  const newCell = (cell) => {
+    // console.log('nC', cnt, cell, visited.indexOf(cell));
+    // let result = visited.filter(v => v[0]==cell[0] && v[1]==cell[1])
+    return visited.filter(v => v[0]==cell[0] && v[1]==cell[1]).length==0;
+  }
+  const notWall = (cell) => {
+    // console.log('nW', cell, mapValue(cell), newCell(cell));
+    //console.log('nW', mapValue(cell) !== 'X' && newCell(cell));
+    return mapValue(cell) !== 'X' && newCell(cell);
+  }
 
   queue.push([x,y]);
-  while (queue.length > 0) {
+
+  // console.log(maze);
+  // console.log('--------------- START',x,y);
+  // console.log('Visited', cnt, JSON.stringify(visited,true));
+  // console.log('Hunt', JSON.stringify(queue,true), queue.length);
+
+  while (queue.length > 0 && cnt < 10) {
     cnt++;
     current = queue.pop();
 
-    // console.log('mapValue', c, x, y, x-1, y-1, ':' + maze[x-1] + ':', '.' + maze[x-1].charAt(y-1) + '.', '/' + maze[x].charAt(y) + '/');
-    // console.log('c', current, mapValue(current));
+    if (mapValue(current) !== ' ') {
+      return 'The treasure is ' + mapValue(current) + ' :)';
+    } else {
+      visited.push(current);
+    }
 
-    if (mapValue(current) === ' ') visited.push(current);
-    if (mapValue(current) !== ' ') return 'The treasure is ' + mapValue(current) + ' :)';
+    // console.log('Current', current);
 
     cell = [current[0],current[1]-1];
     if (notWall(cell)) queue.push(cell);
+    
+    // console.log('Wall', cell, queue.length, queue);
+
 
     cell = [current[0]-1,current[1]];
     if (notWall(cell)) queue.push(cell);
+    
+    // console.log('Wall', cell, queue.length, queue);
+
 
     cell = [current[0]+1,current[1]];
     if (notWall(cell)) queue.push(cell);
+    
+    // console.log('Wall', cell, queue.length, queue);
+
 
     cell = [current[0],current[1]+1];
     if (notWall(cell)) queue.push(cell);
-      
-    console.log('Visited', cnt, visited);
-    console.log('Hunt', queue, queue.length);
+    
+    // console.log('Wall', cell, queue.length, queue);
+
+
+    // console.log('Visited', cnt, JSON.stringify(visited,true));
+    // console.log('Queue', JSON.stringify(queue,true), queue.length);
+    // console.log('---------------');
   }
 
   return 'No treasure found :(';
 }
 
 
-// var maze = [
-//   "XXXX",
-//   "X XX",
-//   "X TX",
-//   "XXXX"
-// ];
+// var maze = [ "XXXX", "X XX", "X TX", "XXXX" ];
 
 var maze = [
   'XXXXXXX',
