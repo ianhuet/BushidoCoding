@@ -1,11 +1,4 @@
-// REFACTOR
-// x same cell added to visited multiple times?
-// x check directions by loop
-
-// x treasure found or all done > more elegant done tracking...
-// x rationalise map co-ordinates
-// x mapValue && canExplore are using different parameter formats
-
+'use strict';
 
 function treasure(maze, x, y) {
 
