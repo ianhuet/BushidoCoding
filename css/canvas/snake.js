@@ -9,41 +9,6 @@ function checkSupported() {
         canvas.height;
         ctx = canvas.getContext('2d');
 
-
-        // function drawSnake() {
-        //     snakeBody.push([currentPosition['x'], currentPosition['y']]);
-        //     ctx.fillStyle = "rgb(200,0,0)";
-        //     ctx.fillRect(currentPosition['x'], currentPosition['y'], gridSize, gridSize);
-        //     if (snakeBody.length > snakeLength) {
-        //         var itemToRemove = snakeBody.shift();
-        //         ctx.clearRect(itemToRemove[0], itemToRemove[1], gridSize, gridSize);
-        //     }
-        //     if (currentPosition['x'] == suggestedPoint[0] && currentPosition['y'] == suggestedPoint[1]) {
-        //         makeFoodItem();
-        //         snakeLength += 1;
-        //     }
-        // }
-
-
-        function drawSnake() {
-            if (snakeBody.some(hasEatenItself)) {
-                gameOver();
-                return false;
-            }
-            snakeBody.push([currentPosition['x'], currentPosition['y']]);
-            ctx.fillStyle = "rgb(200,0,0)";
-            ctx.fillRect(currentPosition['x'], currentPosition['y'], gridSize, gridSize);
-            if (snakeBody.length > snakeLength) {
-                var itemToRemove = snakeBody.shift();
-                ctx.clearRect(itemToRemove[0], itemToRemove[1], gridSize, gridSize);
-            }
-            if (currentPosition['x'] == suggestedPoint[0] && currentPosition['y'] == suggestedPoint[1]) {
-                makeFoodItem();
-                snakeLength += 1;
-                updateScore();
-            }
-        }
-
         function leftPosition(){
             return currentPosition['x'] - gridSize;
         }
@@ -139,6 +104,9 @@ function checkSupported() {
               ctx.fillRect(suggestedPoint[0], suggestedPoint[1], gridSize, gridSize);
             };
         }
+        function hasEatenItself(element, index, array) {
+            return (element[0] == currentPosition['x'] && element[1] == currentPosition['y']);
+        }
           
         function hasPoint(element, index, array) {
             return (element[0] == suggestedPoint[0] && element[1] == suggestedPoint[1]);
@@ -185,10 +153,31 @@ function checkSupported() {
             document.getElementById('score').innerText = score;
         }
 
+        function drawSnake() {
+            if (snakeBody.some(hasEatenItself)) {
+                gameOver();
+                return false;
+            }
+            snakeBody.push([currentPosition['x'], currentPosition['y']]);
+            ctx.fillStyle = "rgb(200,0,0)";
+            ctx.fillRect(currentPosition['x'], currentPosition['y'], gridSize, gridSize);
+            if (snakeBody.length > snakeLength) {
+                var itemToRemove = snakeBody.shift();
+                ctx.clearRect(itemToRemove[0], itemToRemove[1], gridSize, gridSize);
+            }
+            if (currentPosition['x'] == suggestedPoint[0] && currentPosition['y'] == suggestedPoint[1]) {
+                makeFoodItem();
+                snakeLength += 1;
+                updateScore();
+            }
+        }
+
         // This sets the fill color to red
         ctx.fillStyle = "rgb(200,0,0)";
 
         // Global variables
+        var suggestedPoint = 0;
+        var snakeLength = 3;
         var allowPressKeys = true;
         var gridSize = 10;
         var snakeBody = [];
