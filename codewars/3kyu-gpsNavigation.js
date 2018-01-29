@@ -54,34 +54,6 @@ function navigate(numberOfIntersections, roads, start, finish) {
     }
 }
 
-var roads = [
-    {from: 0, to: 1, drivingTime: 5},
-    {from: 0, to: 2, drivingTime: 10},
-    {from: 1, to: 2, drivingTime: 10},
-    {from: 1, to: 3, drivingTime: 2},
-    {from: 2, to: 3, drivingTime: 2},
-    {from: 2, to: 4, drivingTime: 5},
-    {from: 3, to: 2, drivingTime: 2},
-    {from: 3, to: 4, drivingTime: 10}
-];
-// var roads = [
-//     { from: 0, to: 1, drivingTime: 7 },
-//     { from: 0, to: 2, drivingTime: 9 },
-//     { from: 0, to: 5, drivingTime: 14 },
-//     { from: 2, to: 5, drivingTime: 2 },
-//     { from: 2, to: 3, drivingTime: 11 },
-//     { from: 5, to: 0, drivingTime: 14 },
-//     { from: 5, to: 2, drivingTime: 2 },
-//     { from: 5, to: 4, drivingTime: 9 },
-//     { from: 4, to: 5, drivingTime: 9 },
-//     { from: 4, to: 3, drivingTime: 6 },
-//     { from: 3, to: 4, drivingTime: 6 },
-//     { from: 3, to: 2, drivingTime: 11 },
-//     { from: 3, to: 1, drivingTime: 15 },
-//     { from: 1, to: 0, drivingTime: 7 },
-//     { from: 1, to: 3, drivingTime: 15 },
-//     { from: 1, to: 2, drivingTime: 10 },
-//     { from: 2, to: 1, drivingTime: 10 },
-//     { from: 2, to: 0, drivingTime: 9 }
-// ];
-console.log(navigate(6, roads, 0, 5));
+module.exports = {
+    navigate
+}

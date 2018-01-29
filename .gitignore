@@ -1,6 +1,6 @@
 # Folders         #
 ###################
-browserExpt/flexbox/node_modules
+**/node_modules
 
 # Compiled source #
 ###################
