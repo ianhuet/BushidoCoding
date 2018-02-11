@@ -54,6 +54,4 @@ function navigate(numberOfIntersections, roads, start, finish) {
     }
 }
 
-module.exports = {
-    navigate
-}
+module.exports = { navigate };

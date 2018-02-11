@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "@vue/cli-plugin-unit-mocha": "^3.0.0-alpha.11"
+  }
+}
