@@ -1,0 +1,14 @@
+{
+  "name": "challenge_js_the_doors",
+  "version": "1.0.0",
+  "description": "QSteam technical challenge #2 (JS) - The Doors",
+  "main": "the-doors.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ian Huet",
+  "license": "ISC",
+  "dependencies": {
+    "mocha": "^5.0.4"
+  }
+}
